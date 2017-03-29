@@ -1,0 +1,119 @@
+comp += [ "-g" "-w" "+A-27-4-42"]
+link += [ "-g" ]
+
+begin library "common"
+ dirname = "src/common"
+ files = [ "type_description.mli" "utils.ml" "common_types.ml"
+       	  "lattice.ml" "extmap.ml" "extset.ml"]
+ requires = [ "compiler-libs" "compiler-libs.common" ]
+end
+
+begin library "lambda"
+ dirname = "src/lambda"
+ files = [ "cmt_specifics.ml" "mk_lambda.ml" ]
+ requires = [ "compiler-libs" "compiler-libs.common" "compiler-libs.optcomp" "common" ]
+end
+
+(*begin library "alt-compiler-libs"
+ dirname = "src/alt-compiler-libs"
+ files = [ "altTypeTransducer.ml" "altLambda.ml"
+       "altMatching.ml" "altTranslobj.ml" "altTranslcore.ml"
+       "altTranslclass.ml" "altTranslmod.ml"
+       "altLambdaImpl.ml"
+       ]
+ requires = [ "compiler-libs" "compiler-libs.common" ]
+end *)
+
+begin library "xlambda"
+ dirname = "src/xlambda"
+ files = [ "xlambda.mli" "print_xlambda.ml" "xlambda_interpret.ml" "mk_xlambda.ml" ]
+ requires = [ "common" "compiler-libs" "compiler-libs.common" ]
+end
+
+begin library "venv"
+ dirname = "src/venv"
+ files =
+  [
+    "puf.ml" "locations.ml" "positions.ml"
+    "int_interv.ml" "constants.ml"
+    "cps.ml" "blocks.ml" "arrays.ml" "funs.ml"
+    "dataType.ml" "latticeMap.ml" "venv.ml"
+  ]
+ requires = [ "common" "compiler-libs" "compiler-libs.common"]
+end
+
+
+begin library "data"
+ dirname = "src/data"
+ files =
+  [
+    "puf.ml" "locations.ml"
+    "int_interv.ml" "constants.ml"
+    "data.ml" "valueMap.ml" "envs.ml" "access.ml" "manipulation.ml" "ifcond.ml"
+    "int.ml" "otherints.ml" "blocks.ml" "cps.ml" "bools.ml"
+    "strings.ml" "arrays.ml" "floats.ml" "funs.ml" "exprs.ml"
+    "print_data.ml"
+  ]
+ requires = [ "common" "compiler-libs" "compiler-libs.common"]
+end
+
+begin library "relationnal"
+ dirname = "src/relationnal"
+ files = [ "puf.ml" "difftrie.ml" "baseTypes.ml" "baseGraph.ml" "baseEquivalence.ml" "rEnv.ml"]
+ requires = [ "common" "curry-flavor" "venv" "compiler-libs" "compiler-libs.common" ]
+end
+
+begin library "hgraph"
+ dirname = "src/hgraph"
+ files = [ "hgraph_types.mli" "hgraph.ml"
+           "stack_types.mli" "abstract_stack.ml"
+           "fixpoint_types.mli" "fixpoint.ml"
+           "export.ml" ]
+ requires = [ "common" ]
+end
+
+begin library "lambda-analysis-api"
+ dirname = "src/analysis"
+ files = [ "xlambda_to_hgraph.ml" "analEnv.mli" "oCamlEnv.ml"
+       "xlambda_analysis.ml" "print_hgraph.ml" ]
+ requires = [ "common" "xlambda" "hgraph" ]
+end
+
+(*
+begin library "lambda-analysis"
+  dirname = "src/analysis"
+  files = [ "def_c_fun.ml" "oldEnv.ml" ]
+  requires = [ "common" "xlambda" "hgraph" "data" "lambda-analysis-api" ]
+end
+*)
+
+begin library "simple-exn"
+ dirname = "src/simple_exn"
+ files = [ "map_utils.ml" "topEnv.ml" "absVals.ml" "IEsig.mli" "intEnv.ml"
+           "apronEnv.ml" "no_ints.ml" "cpsEnv.ml" "blockEnv.ml" "aenv.ml" ]
+ requires = [ "common" "venv" "lambda-analysis-api" "compiler-libs.common"
+              "apron" ]
+end
+
+begin program "ocp-analyser-with-watcher"
+ dirname = [ "src" ]
+ files = [ "driver/cmb.ml" "ocp-watcher-interface/as_tool.ml" ]
+ requires = [ "simple-exn" "ocplib-watcher-api" "common" "lambda"
+              "xlambda" "hgraph" "lambda-analysis-api" "apron.polkaMPQ" ]
+end
+
+begin program "ocp-analyzer"
+ dirname = [ "src" ]
+ files = [ "driver/cmb.ml" "ocp-analyzer/ocp_analyzer.ml" ]
+ requires = [ "simple-exn" "common" "lambda"
+              "xlambda" "hgraph" "lambda-analysis-api"
+	      "apron.boxMPQ" ]
+end
+
+(*
+begin library "api"
+ dirname = "src/api"
+ files = [ "cdef.ml" ]
+ requires = [ "data" "lambda-analysis" (* temporary *) ]
+end
+*)

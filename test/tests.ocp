@@ -1,0 +1,132 @@
+begin test "tgraph"
+ test_byte = false
+ files = [ "test_graph.ml" ]
+ requires = [ "hgraph" ]
+end
+
+(*
+begin test "tint"
+ test_byte = false
+ files = [ "test_int.ml" ]
+ requires = [ "hgraph" ]
+end
+*)
+
+(*
+begin test "tdata"
+ test_byte = false
+ files = [ "test_data.ml"
+           "bigraphs/bgints.ml" (* put here bigraph definitions *)
+	   "test_data_launch" ]
+ requires = [ "common" "hgraph" "data" ]
+ tests =
+ [
+  "bgints" ( test_args = [ "bgints" ] )
+ ]
+end
+*)
+
+(*
+begin test "thgraph"
+ test_byte = false
+ files = [ "test_hgraph.ml" ]
+ requires = [ "common" "hgraph" "data" ]
+end
+*)
+
+begin test "txlambda"
+ test_byte = false
+ files = [ "test_xlambda.ml" ]
+ requires = [ "common" "xlambda" ]
+end
+(*
+begin test "ttoolchain"
+ files = [ "test_toolchain.ml" ]
+ requires = [ "common" "lambda" "xlambda" "compiler-libs" "compiler-libs.common" ]
+ test_dir = "test/samples"
+ test_byte = false
+ test_serialized = true
+ tests =
+ [
+  "simple" ( test_args = [ "myper.ml" ] )
+  "chain" ( test_args = [ "myper.ml" "-open" "Myper" "a.ml" ] )
+  "pervasives" ( test_args = [ "pervasives.ml" ] )
+ ]
+end
+
+begin test "tbg"
+ files = [ ]
+ requires = [ "bigraphc" ]
+ test_dir = "test/samples"
+ test_byte = false
+ test_serialized = true
+ tests =
+ [
+  "simple" ( test_args = [ "myper.ml" ] )
+  "chain" ( test_args = [ "myper.ml" "-open" "Myper" "a.ml" ] )
+  "pervasives" ( test_args = [ "pervasives.ml" ] )
+  "simplest" ( test_args = [ "simpler.ml" ] )
+  "pervasives2" ( test_args = [ "pervasives2.ml" ] )
+  "good" ( test_args = [ "pervasives.ml" "-open" "Pervasives" "good.ml" ] )
+  "bad" ( test_args = [ "pervasives.ml" "-open" "Pervasives" "bad.ml" ] )
+  "conditionnal" ( test_args = [ "pervasives.ml" "-open" "Pervasives" "conditionnal.ml" ] )
+  "recursives" ( test_args = [ "pervasives.ml" "-open" "Pervasives" "recursives.ml" ] )
+ ]
+end
+
+begin test "tba"
+ files = [ ]
+ requires = [ "analyzer" ]
+ test_dir = "test/samples"
+ test_byte = false
+ test_serialized = true
+ tests =
+ [
+  "simple" ( test_args = [ "myper.cmb" ] )
+  "chain" ( test_args = [ "myper.cmb" "a.cmb" ] )
+  "pervasives" ( test_args = [ "pervasives.cmb" ] )
+  "simplest" ( test_args = [ "simpler.cmb" ] )
+  "pervasives2" ( test_args = [ "pervasives2.cmb" ] )
+  "good" ( test_args = [ "pervasives.cmb" "good.cmb" ] )
+  "bad" ( test_args = [ "pervasives.cmb" "bad.cmb" ] test_exit = 1 )
+  "conditionnal" ( test_args = [ "pervasives.cmb" "conditionnal.cmb" ] )
+  "recursives" ( test_args = [ "pervasives.cmb" "recursives.cmb" ] )
+
+ ]
+
+end
+
+
+begin test "tmain"
+ files = [ ]
+ requires = [ "main" ]
+ test_dir = "test/samples"
+ test_byte = false
+ test_serialized = true
+ tests =
+ [
+  "ifs" ( test_args = [ "-counter" "-dxlambda" "pervasives.ml" "-open" "Pervasives" "ifs.ml" "-dot" "ifs" ] )
+  "simple" ( test_args = [ "-counter" "-dxlambda" "myper.ml" "-dot" "myper" ] )
+  "chain" ( test_args = [ "-counter" "-dxlambda" "myper.ml" "-open" "Myper" "a.ml" "-dot" "a" ] )
+  "pervasives" ( test_args = [ "-counter" "-dxlambda" "pervasives.ml" "-dot" "pervasives" ] )
+  "simplest" ( test_args = [ "-counter" "-dxlambda" "simpler.ml" "-dot" "simpler" ] )
+  "pervasives2" ( test_args = [ "-counter" "-dxlambda" "pervasives2.ml" "-dot" "pervasives2" ] )
+  "good" ( test_args = [ "-counter" "-dxlambda" "pervasives.ml" "-open" "Pervasives" "good.ml" "-dot" "good" ] )
+  "bad" ( test_args = [ "-counter" "-dxlambda" "pervasives.ml" "-open" "Pervasives" "bad.ml" "-dot" "bad" ] test_exit = 1 )
+  "conditionnal" ( test_args = [ "-counter" "-dxlambda" "pervasives.ml" "-open" "Pervasives" "conditionnal.ml" "-dot" "conditionnal" ]  test_exit = 1 )
+  "cycle" ( test_args = [ "-counter" "-dxlambda" "pervasives.ml" "-open" "Pervasives" "cycle.ml" "-dot" "cycle" ] )
+  "minicycle" ( test_args = [ "-counter" "-dxlambda" "minicycle.ml" "-dot" "minicycle" ] )
+  "loop_no_rec" ( test_args = [ "-counter" "-dxlambda" "loop_no_rec.ml" "-dot" "loop_no_rec" ] test_exit = 1 )
+  "functions" ( test_args = [ "-counter" "-dxlambda" "pervasives.ml" "-open" "Pervasives" "functions.ml" "-dot" "functions" ] test_exit = 1 )
+  "booleans" ( test_args = [ "-counter" "-dxlambda" "pervasives.ml" "-open" "Pervasives" "booleans.ml" "-dot" "booleans" ] )
+  "integers" ( test_args = [ "-counter" "-dxlambda" "pervasives.ml" "-open" "Pervasives" "integers.ml" "-dot" "integers" ] )
+  "blocks" ( test_args = [ "-counter" "-dxlambda" "pervasives.ml" "-open" "Pervasives" "blocks.ml" "-dot" "blocks" ] )
+  "option" ( test_args = [ "-counter" "-dxlambda" "pervasives.ml" "-open" "Pervasives" "option.ml" "-dot" "option" ] test_exit = 1 )
+  "semantics" ( test_args = [ "-counter" "-dxlambda" "pervasives.ml" "-open" "Pervasives" "semantics.ml" "-dot" "semantics" ] )
+  "applys" ( test_args = [ "-counter" "-dxlambda" "pervasives.ml" "-open" "Pervasives" "applys.ml" "-dot" "applys" ] )
+  "recursives" ( test_args = [ "-counter" "-dxlambda" "pervasives.ml" "-open" "Pervasives" "recursives.ml" "-dot" "recursives" ] )
+ ]
+
+end
+*)
+

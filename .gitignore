@@ -1,0 +1,9 @@
+*.cm?
+ocp-build.root.old*
+_obuild/
+*~
+\#*\#
+*.orig
+*.dot
+*.tml
+test/samples/*.xlml

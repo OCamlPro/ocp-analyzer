@@ -1,0 +1,217 @@
+patch add_constructor_arguments {
+  constr_names = [ "Pfloatfield" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pduprecord" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pfloatofint" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pnegfloat" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pabsfloat" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Paddfloat" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Psubfloat" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pmulfloat" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pdivfloat" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Parrayrefu" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pcvtbint" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pbigarrayref" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pstring_load_32" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pstring_load_64" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pbigstring_load_32" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pbigstring_load_64" ]
+  constr_new_arguments = [ "_" ]
+}
+patch add_constructor_arguments {
+  constr_names = [ "Pbintofint" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pnegbint" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Paddbint" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Psubbint" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pmulbint" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pdivbint" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pmodbint" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pandbint" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Porbint" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pxorbint" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Plslbint" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Plsrbint" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pasrbint" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pbbswap" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pmakeblock" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pmakearray" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments_exp {
+  constr_exp_names = [ "Pmakeblock" ]
+  constr_exp_new_arguments = [ "Memprof.noalloc Location.none (Path.Pident (Ident.create \"\"))" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Llet" ]
+  constr_position = "2"
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Lletrec" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments_exp {
+  constr_exp_names = [ "Lletrec" ]
+  constr_exp_new_arguments = [ "Memprof.noalloc Location.none (Path.Pident (Ident.create \"\"))" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Lfunction" ]
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments_exp {
+  constr_exp_names = [ "Lfunction" ]
+  constr_exp_new_arguments = [ "Memprof.noalloc Location.none (Path.Pident (Ident.create \"\"))" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Lstaticraise" ]
+  constr_position = "start"
+  constr_new_arguments = [ "_" ]
+}
+
+patch add_constructor_arguments_exp {
+  constr_exp_names = [ "Lstaticraise" ]
+  constr_exp_position = "start"
+  constr_exp_new_arguments = [ "{Memprof.l = Location.none; Memprof.p = (Path.Pident (Ident.create \"\"))}" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Parrayrefs" ]
+  constr_new_arguments = [ "_loc" ]
+}
+
+patch add_constructor_arguments_exp {
+  constr_exp_names = [ "Parrayrefu" ]
+  constr_exp_new_arguments = [ "_loc" ]
+}
+
+patch add_constructor_arguments {
+  constr_names = [ "Pccall" ]
+  constr_new_arguments = [ "_" ]
+}
+
